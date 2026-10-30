@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0E1330"><svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect x="420" y="390" width="90" height="20" fill="#54B3C2"/><rect x="510" y="390" width="90" height="20" fill="#A00000"/><rect x="600" y="390" width="90" height="20" fill="#281E5A"/><rect x="690" y="390" width="90" height="20" fill="#1438BE"/></svg></template>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&amp;family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet"><style>html,body{height:100%;overflow:hidden;overscroll-behavior:none}body{margin:0;background:#0E1330;-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}a:hover{color:#54B3C2}@keyframes fs-spin{to{transform:rotate(360deg)}}@keyframes fs-load{0%{clip-path:inset(0 100% 0 0);opacity:1}75%{clip-path:inset(0 0 0 0);opacity:1}90%{clip-path:inset(0 0 0 0);opacity:0}100%{clip-path:inset(0 100% 0 0);opacity:0}}</style><style>:root{--fs-pad:50px;--fs-accent:#54B3C2;--fs-ease:0.3s linear}a{transition:color var(--fs-ease),opacity var(--fs-ease)}[data-fs-header]{padding-top:30px !important}[data-fs-nav] a{opacity:.7}[data-fs-nav] a:hover,[data-fs-nav] a[aria-current="page"]{opacity:1}[data-fs-logo]{transition:opacity var(--fs-ease)}[data-fs-logo]:hover{opacity:.7}:focus{outline:0}:focus-visible{outline:1px dotted var(--fs-accent);outline-offset:3px}::-webkit-scrollbar{width:1px}::-webkit-scrollbar-track{box-shadow:inset 0 0 6px rgba(0,0,0,.08)}::-webkit-scrollbar-thumb{box-shadow:inset 0 0 6px var(--fs-accent)}@media (max-width:840px){:root{--fs-pad:30px}[data-fs-main]{padding:0 !important}}@media (max-width:640px){:root{--fs-pad:20px}[data-fs-header]{padding-top:20px !important}[data-fs-logo]{height:44px !important}[data-fs-logo] img{height:30px !important}[data-fs-h1]{white-space:normal !important;text-wrap:balance}[data-fs-footer]{padding-left:0 !important;padding-right:0 !important}}</style></helmet>
+<div data-fs-page="" style="height:100dvh;background:{{ t.bg }};font-family:'Source Code Pro',ui-monospace,monospace;color:{{ t.muted }};font-size:13px;line-height:20px;box-sizing:border-box;padding:0 var(--fs-pad);display:flex;flex-direction:column;transition:background 0.3s,color 0.3s;overflow:hidden;">
+  <div style="height:6px;margin:0 calc(-1 * var(--fs-pad));background:linear-gradient(90deg,#54B3C2 0%,#A00000 35%,#281E5A 68%,#1438BE 100%);"></div>
+  <header data-fs-header="" style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding-top:32px;position:relative;z-index:10;">
+    <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap;">
+      <a href="#home" onClick="{{ goHome }}" data-fs-logo="" style="display:flex;align-items:center;gap:16px;height:56px;">
+        <img src="assets/wordmark.png" alt="Future Stack" style="height:40px;width:auto;display:block;filter:{{ t.wordmark }};">
+      </a>
+      <sc-if value="{{ isNews }}" hint-placeholder-val="{{ false }}">
+        <div style="width:1px;height:44px;background:{{ t.rule }};"></div>
+        <span style="font-family:'Jost',sans-serif;font-weight:300;font-size:22px;letter-spacing:0.3em;color:{{ t.ink }};">NEWS</span>
+      </sc-if>
+    </div>
+    <nav data-fs-nav="" style="display:flex;align-items:flex-start;gap:28px;padding-top:20px;font-family:'Jost',sans-serif;font-size:12px;letter-spacing:0.22em;color:{{ t.ink }};">
+    </nav>
+  </header>
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <main data-fs-main="" style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:0 10px;position:relative;">
+      <div aria-hidden="true" style="position:absolute;top:50%;right:calc(-1 * var(--fs-pad));width:min(62vw,640px);aspect-ratio:338/366;transform:translate(28%,-50%);pointer-events:none;z-index:0;">{{ mandala }}</div>
+      <h1 data-fs-h1="" style="margin:0;font-family:'Jost',sans-serif;font-weight:300;font-size:clamp(34px,5.2vw,72px);line-height:1.08;letter-spacing:0.01em;color:{{ t.ink }};white-space:nowrap;position:relative;z-index:1;">BRB, building the future.</h1>
+    </main>
+  </sc-if>
+
+  <sc-if value="{{ isNews }}" hint-placeholder-val="{{ false }}">
+    <main data-fs-main="" style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:0 10px;position:relative;overflow:hidden;">
+      <h1 data-fs-h1="" style="margin:0;font-family:'Jost',sans-serif;font-weight:300;font-size:clamp(34px,5.2vw,72px);line-height:1.08;letter-spacing:0.01em;color:{{ t.ink }};text-align:center;">Stay tuned.</h1>
+      <div style="height:2px;width:min(100%,420px);background:{{ t.rule }};position:relative;overflow:hidden;">{{ loader }}</div>
+    </main>
+  </sc-if>
+
+  <footer data-fs-footer="" style="padding:24px 10px 28px;font-size:11px;color:{{ t.muted }};">© Future Stack, 2026. All rights reserved.</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;darkMode&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { page: (location.hash === '#news') ? 'news' : 'home' };
+  componentDidMount() {
+    this.onHash = () => this.setState({ page: location.hash === '#news' ? 'news' : 'home' });
+    window.addEventListener('hashchange', this.onHash);
+  }
+  componentWillUnmount() { window.removeEventListener('hashchange', this.onHash); }
+  go(page) { return (e) => { e.preventDefault(); history.replaceState(null, '', '#' + page); this.setState({ page }); }; }
+  renderVals() {
+    const dark = this.props.darkMode ?? true;
+    const t = dark
+      ? { bg: '#0E1330', ink: '#EEF1F8', muted: '#A3AAC4', accent: '#54B3C2', rule: 'rgba(238,241,248,0.12)', wordmark: 'brightness(0) invert(0.95)' }
+      : { bg: '#FFFFFF', ink: '#161E3E', muted: '#4A5068', accent: '#1438BE', rule: '#E3E7EF', wordmark: 'none' };
+    const mandalaSrc = (window.__resources && window.__resources.mandala) || 'assets/mandala.png';
+    if (!this.mandalaEl) this.mandalaEl = {};
+    const key = dark ? 'd' : 'l';
+    if (!this.mandalaEl[key]) this.mandalaEl[key] = React.createElement('img', { src: mandalaSrc, alt: '',
+      style: { width: '100%', height: '100%', display: 'block', opacity: dark ? 0.07 : 0.14, animation: 'fs-spin 240s linear infinite', filter: dark ? 'none' : 'saturate(0.8)' } });
+    if (!this.loaderEl) this.loaderEl = React.createElement('div', { style: { position: 'absolute', inset: 0, background: 'linear-gradient(90deg,#54B3C2 0%,#A00000 35%,#281E5A 68%,#1438BE 100%)', animation: 'fs-load 5.4s cubic-bezier(.45,.05,.35,1) infinite' } });
+    const isNews = this.state.page === 'news';
+    return {
+      t, isNews, isHome: !isNews,
+      newsCurrent: isNews ? 'page' : undefined,
+      newsColor: isNews ? t.accent : 'inherit',
+      mandala: this.mandalaEl[key], loader: this.loaderEl,
+      goHome: this.go('home'), goNews: this.go('news')
+    };
+  }
+}
+</script>
+</body>
+</html>
